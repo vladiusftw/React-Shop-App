@@ -1,33 +1,26 @@
-import { Box, Button, styled, Typography } from '@mui/material'
+import { Box, styled, Typography } from '@mui/material'
 import React from 'react'
 import { theme } from '../theme'
 import Slider  from 'react-slick'
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
-import MediumArrow from '../styles/mediumArrow.css'
 import { Items } from '../Items';
+import MediumArrow from '../styles/mediumArrow.css'
 
-const NewArrival = () => {
-    const Header = styled(Box)({
-        display: 'flex',
-        justifyContent: 'space-between',
-        paddingLeft: '2%',
-        paddingRight: '2%',
-        marginBottom: '4%'
-    })
+const BestSeller = () => {
 
     const Item = styled(Box)({
         [theme.breakpoints.up('xl')]: {
-            height: 450
+            height: 500
         },
         [theme.breakpoints.between('lg','xl')]: {
-            height: 350
+            height: 400
         },
         [theme.breakpoints.between('md','lg')]: {
-            height: 250
+            height: 350
         },
         [theme.breakpoints.down('md')]: {
-            height: 150
+            height: 200
         }
     })
 
@@ -93,19 +86,17 @@ const NewArrival = () => {
 
     const settings = {
         infinite: true,
-        slidesToShow: 4.8,
-        slidesToScroll: 1,
+        slidesToShow: 4,
+        slidesToScroll: 2,
         autoplay: true,
         autoplaySpeed: 2000,
-        arrows: true,
+        arrows: false,
         vertical: false,
         className: MediumArrow
     } 
-
   return (
-    <Box sx={{marginBottom: '10%'}}>
-        <Header>
-            <Typography sx={{
+    <Box sx={{marginLeft: '2%',marginRight:'2%',marginBottom: '10%'}}>
+        <Typography sx={{
                 [theme.breakpoints.up('lg')]: {
                     fontSize: 48
                 },
@@ -119,53 +110,29 @@ const NewArrival = () => {
                     fontSize: 16
                 },
                 fontFamily: 'Merriweather',
-                fontWeight: '700'
+                fontWeight: '700',
+                marginBottom: '2%'
             }}>
-                New Arrival
+                Best Seller
             </Typography>
-
-            <Button sx={{
-                color: '#F86338',
-                [theme.breakpoints.up('lg')]: {
-                    fontSize: 24
-                },
-                [theme.breakpoints.between('md','lg')]: {
-                    fontSize: 18
-                },
-                [theme.breakpoints.between('sm','md')]: {
-                    fontSize: 14
-                },
-                [theme.breakpoints.down('sm')]: {
-                    fontSize: 12
-                },
-                fontFamily: 'Merriweather',
-                fontWeight: '400',
-                textTransform: 'none'
-
-            }}>
-                See All
-            </Button>
-        </Header>
-        <Slider {...settings}>
-            {
-                Items.map((item,index)=>{
-                    if(item.new == true) return(
-                        <Item key={index}>
-                            <img src={item.image} width={'100%'} height={'100%'} style={{aspectRatio: 'auto'}}/>
-                            <ItemCategory>{item.category}</ItemCategory>
-                            <ItemName>{item.name}</ItemName>
-                            <ItemDesc>{item.short}</ItemDesc>
-                            <ItemPrice>${item.price}</ItemPrice>
-                        </Item>
-                    )
-                })
-            }
-        </Slider>
-        
+            <Slider {...settings}>
+                {
+                    Items.map((item,index)=>{
+                        if(item.bestseller == true) return(
+                            <Item key={index}>
+                                <img src={item.image} width={'100%'} height={'100%'} style={{aspectRatio: 'auto'}}/>
+                                <ItemCategory>{item.category}</ItemCategory>
+                                <ItemName>{item.name}</ItemName>
+                                <ItemDesc>{item.short}</ItemDesc>
+                                <ItemPrice>${item.price}</ItemPrice>
+                            </Item>
+                        )
+                    })
+                }
+            </Slider>
+            
     </Box>
   )
 }
 
-
-
-export default NewArrival
+export default BestSeller

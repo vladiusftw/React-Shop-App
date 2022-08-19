@@ -4,14 +4,14 @@
 .slick-prev {
     left: 3% !important;
     z-index: 1;
-    padding-bottom: 15%;
+    padding-bottom: 5%;
 }
 .slick-next {
     right: 3% !important;
     z-index: 1;
-    padding-bottom: 15%;
+    padding-bottom: 5%;
 }
-.slick-slide {
+.slick-slide > {
     margin: 0 2px;
 }
 .slick-list {

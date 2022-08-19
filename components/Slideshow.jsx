@@ -1,6 +1,8 @@
 import { Box, Button, Stack, styled, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
-import { Slide } from 'react-slideshow-image'
+import Slider  from 'react-slick'
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 import { theme } from '../theme'
 import 'react-slideshow-image/dist/styles.css'
 const Slideshow = () => {
