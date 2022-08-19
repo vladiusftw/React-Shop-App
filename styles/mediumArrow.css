@@ -1,0 +1,16 @@
+.slick-prev {
+    left: 3% !important;
+    z-index: 1;
+    padding-bottom: 15%;
+}
+.slick-next {
+    right: 3% !important;
+    z-index: 1;
+    padding-bottom: 15%;
+}
+.slick-slide {
+    margin: 0 2px;
+}
+.slick-list {
+    margin: 0 -2px;
+}
