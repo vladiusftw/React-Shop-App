@@ -1,4 +1,4 @@
-import { Box, styled, Typography } from '@mui/material'
+import { Box, styled, Typography, Link } from '@mui/material'
 import React from 'react'
 import { theme } from '../theme'
 import logo from '../assets/Group.png'
@@ -107,22 +107,29 @@ const BottomBar = () => {
 
                 <SecondColumn>
                     <CustomText sx={{fontWeight: '700'}}>Our Social Media</CustomText>
+                    <Link href={'https://www.facebook.com/login/'} target={'_blank'} style={{ textDecoration: 'none' }}>   
+                        <CustomText>
+                            Facebook
+                        </CustomText>
+                    </Link>
 
-                    <CustomText>
-                        Facebook
-                    </CustomText>
+                    <Link href={'https://twitter.com/?lang=en'} target={'_blank'} style={{ textDecoration: 'none' }}>
+                        <CustomText>
+                            Twitter
+                        </CustomText>
+                    </Link>
 
-                    <CustomText>
-                        Twitter
-                    </CustomText>
+                    <Link href={'https://www.instagram.com/'} target={'_blank'} style={{ textDecoration: 'none' }}>
+                        <CustomText>
+                            Instagram
+                        </CustomText>
+                    </Link>
 
-                    <CustomText>
-                        Instagram
-                    </CustomText>
-
-                    <CustomText>
-                        Youtube
-                    </CustomText>
+                    <Link href={'https://www.youtube.com/'} target={'_blank'} style={{ textDecoration: 'none' }}>
+                        <CustomText>
+                            Youtube
+                        </CustomText>
+                    </Link>
                 
                 </SecondColumn>
 
