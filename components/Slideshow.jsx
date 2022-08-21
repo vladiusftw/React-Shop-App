@@ -4,7 +4,6 @@ import Slider  from 'react-slick'
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import { theme } from '../theme'
-import 'react-slideshow-image/dist/styles.css'
 import { Link } from 'react-router-dom';
 const Slideshow = () => {
     const Header1 = styled(Typography)({
