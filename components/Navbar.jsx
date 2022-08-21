@@ -142,7 +142,7 @@ const Navbar = () => {
             </Dashboard>
             <DashboardMenu variant={'outlined'} onClick={openMenu}>Dashboard</DashboardMenu>
             <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} keepMounted onClose={handleClose}>
-                <MenuItem>Home</MenuItem>
+                <RouterLink to={'/'} ><MenuItem>Home</MenuItem></RouterLink>
                 <MenuItem>About</MenuItem>
                 <MenuItem>FAQ</MenuItem>
                 <MenuItem>Blog</MenuItem>
