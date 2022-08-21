@@ -2,7 +2,7 @@ import { Box, Button, Container, Grid, Input, Stack, styled, TextField, Typograp
 import React, { useEffect, useState } from 'react'
 import { theme } from '../theme'
 import TrashIcon from '../assets/trashIcon.png'
-import { collection, query , onSnapshot } from "firebase/firestore";
+import { collection, query , onSnapshot, deleteDoc, doc } from "firebase/firestore";
 import { db } from '../Firebase'
 
 const CartList = () => {
@@ -57,6 +57,10 @@ const ResponsiveText = styled(Typography)({
     },
     fontFamily: 'DM Sans'
 })
+
+const deleteItem = async(name) => {
+    await deleteDoc(doc(db, "items", name));
+}
   return (
     <Box sx={{display:'flex',flex:3,marginBottom: '10%'}}>
         <Box sx={{flex:0.3}}/>
@@ -155,7 +159,7 @@ const ResponsiveText = styled(Typography)({
 
                                     </Box>
                                     <Box sx={{flex:0.4,alignItems:'center',justifyContent:'center'}}>
-                                        <Button>
+                                        <Button onClick={()=>deleteItem(item?.name)}>
                                             <img src={TrashIcon} style={{height:'50%',width:'50%'}} />
                                         </Button>
                                     </Box>
