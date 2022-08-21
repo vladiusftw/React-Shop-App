@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { AppBar, styled, SvgIcon, Toolbar, Box, Typography, Container, Badge, Menu, MenuItem, Button, Link} from '@mui/material'
 import phoneIcon from '../assets/phoneIcon.png'
 import logoIcon from '../assets/logoIcon.png'
@@ -10,6 +10,8 @@ import '@fontsource/dm-sans'
 import '@fontsource/merriweather'
 import { theme } from '../theme'
 import { Link as RouterLink} from 'react-router-dom' 
+import { collection, query , onSnapshot } from "firebase/firestore";
+import { db } from '../Firebase'
 
 const StyledToolbar = styled(Toolbar)({
     display: 'flex',
@@ -93,6 +95,14 @@ const CustomButton = styled(Button)({
 
 
 const Navbar = () => {
+    const [numItems,setNumItems] = useState(0)
+    useEffect(()=>{
+        const q = query(collection(db, "items"));
+        const unsub = onSnapshot(q, (querySnapshot) => {
+            setNumItems(querySnapshot.size)
+        });
+        return unsub
+    })
     const [anchorEl,setAnchorEl] = useState(null)
     
     const handleClose = () => {
@@ -143,7 +153,7 @@ const Navbar = () => {
                 </CustomButton>
                 
                 <CustomButton component={RouterLink} to={'/cart'}>
-                    <Badge badgeContent={3} color={'badgeColor'}>
+                    <Badge badgeContent={numItems} color={'badgeColor'}>
                         <img src={cartIcon} />
                     </Badge>
                 </CustomButton>
