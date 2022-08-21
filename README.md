@@ -1,4 +1,4 @@
-# 1- run npx create-react-app
+# 1- run npx create-react-app <name of the app>
 
 # delete all files from src and import the ones given in this folder
 
