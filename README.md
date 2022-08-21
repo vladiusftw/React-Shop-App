@@ -15,3 +15,5 @@
 # npm install material-ui-image
 
 # npm install firebase@9.6.11
+
+# npm i react-router-dom
