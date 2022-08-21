@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { theme } from '../theme'
 import 'react-slideshow-image/dist/styles.css'
+import { Link } from 'react-router-dom';
 const Slideshow = () => {
     const Header1 = styled(Typography)({
         fontFamily:'Merriweather',
@@ -64,7 +65,7 @@ const Slideshow = () => {
         <Box sx={{flex: 1.8, paddingLeft: '3.5%'}}>
             <Header1>Sort out Your Spring Look</Header1>
             <Header2>We will help to develop every smallest thing into a big one for your company</Header2>
-            <ShopButton variant={'contained'}>
+            <ShopButton variant={'contained'} component={Link} to={`/shop`}>
                 <Typography sx={{fontFamily:'DM Sans',[theme.breakpoints.between('lg','xl')]:{fontSize:16},[theme.breakpoints.down('lg')]:{fontSize:10}}}>Shop {'>'}</Typography>
             </ShopButton>
         </Box>

@@ -1,0 +1,10 @@
+
+.MuiOutlinedInput-notchedOutline{
+    border-color: "green";
+}
+.MuiOutlinedInput-notchedOutline {
+    border-color: "red"
+}
+.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: "purple"
+}

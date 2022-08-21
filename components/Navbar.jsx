@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { AppBar, styled, SvgIcon, Toolbar, Box, Typography, Container, Badge, Menu, MenuItem, Button} from '@mui/material'
+import { AppBar, styled, SvgIcon, Toolbar, Box, Typography, Container, Badge, Menu, MenuItem, Button, Link} from '@mui/material'
 import phoneIcon from '../assets/phoneIcon.png'
 import logoIcon from '../assets/logoIcon.png'
 import favIcon from '../assets/favIcon.png'
@@ -8,8 +8,8 @@ import profileIcon from '../assets/profileIcon.png'
 import { Facebook, Instagram, Twitter, YouTube } from '@mui/icons-material'
 import '@fontsource/dm-sans'
 import '@fontsource/merriweather'
-import {Link} from '@mui/material'
 import { theme } from '../theme'
+import { Link as RouterLink} from 'react-router-dom' 
 
 const StyledToolbar = styled(Toolbar)({
     display: 'flex',
@@ -62,11 +62,14 @@ const DashboardMenu = styled(Button)({
 const Icons = styled(Box)({
     display: 'flex',
     paddingRight: '2%',
-    [theme.breakpoints.up('sm')]: {
-        gap: 40
+    [theme.breakpoints.up('md')]: {
+        gap: 30
+    },
+    [theme.breakpoints.between('sm','md')]: {
+        gap: 20
     },
     [theme.breakpoints.down('sm')]: {
-        gap: 20
+        gap: 0
     }
 })
 
@@ -74,6 +77,16 @@ const DashboardButton = styled(Typography)({
     fontFamily: 'DM Sans',
     color: 'black',
     fontSize: 16
+})
+
+const CustomButton = styled(Button)({
+    [theme.breakpoints.between('sm','md')] :{
+        
+    },
+    [theme.breakpoints.down('sm')] :{
+        height: 20,
+        width: 20
+    },
 })
 
 
@@ -90,14 +103,14 @@ const Navbar = () => {
         setAnchorEl(event.currentTarget)
     }
   return (
-    <AppBar position='sticky' elevation={0}>
+    <AppBar position='sticky' elevation={0} >
         <StyledToolbar>
             <PhoneNumber>
                 <img src={phoneIcon}/>
                 <Typography variant={'p'} sx={{color:'black',[theme.breakpoints.down('sm')]:{fontSize: 10},[theme.breakpoints.up('sm')]:{fontSize:16}, WebkitLineClamp:1,fontFamily:'DM Sans',fontWeight:'500'}} noWrap>+022 319 821 967</Typography>
             </PhoneNumber>
             <Box sx={{[theme.breakpoints.down('sm')]:{display:'none'},[theme.breakpoints.up('md')]:{display:'block'}}}>
-             <img src={logoIcon}/>
+                <img src={logoIcon}/>
             </Box>
             
 
@@ -112,7 +125,7 @@ const Navbar = () => {
         </StyledToolbar>
         <StyledToolbar>
             <Dashboard>
-                <DashboardButton sx={{fontWeight:'bold'}}>Home</DashboardButton>
+                <RouterLink to={'/'} ><DashboardButton sx={{fontWeight:'bold'}}>Home</DashboardButton></RouterLink>
                 <DashboardButton>About</DashboardButton>
                 <DashboardButton>FAQ</DashboardButton>
                 <DashboardButton>Blog</DashboardButton>
@@ -125,12 +138,21 @@ const Navbar = () => {
                 <MenuItem>Blog</MenuItem>
             </Menu>
             <Icons>
-                <img src={favIcon}/>
-                <Badge badgeContent={3} color={'badgeColor'}>
-                    <img src={cartIcon}/>
-                </Badge>
+                <CustomButton>
+                    <img src={favIcon} />
+                </CustomButton>
                 
-                <img src={profileIcon}/>
+                <CustomButton component={RouterLink} to={'/cart'}>
+                    <Badge badgeContent={3} color={'badgeColor'}>
+                        <img src={cartIcon} />
+                    </Badge>
+                </CustomButton>
+
+                <CustomButton>
+                    <img src={profileIcon} />
+                </CustomButton>
+                
+                
 
             </Icons>
         </StyledToolbar>

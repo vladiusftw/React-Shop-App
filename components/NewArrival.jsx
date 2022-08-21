@@ -1,4 +1,4 @@
-import { Box, Button, styled, Typography } from '@mui/material'
+import { Box, Button, styled, Tooltip, Typography } from '@mui/material'
 import React from 'react'
 import { theme } from '../theme'
 import Slider  from 'react-slick'
@@ -6,6 +6,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import MediumArrow from '../styles/mediumArrow.css'
 import { Items } from '../Items';
+import { Link } from 'react-router-dom';
+import HeartIcon from '../assets/Heart.png'
 
 const NewArrival = () => {
     const Header = styled(Box)({
@@ -151,12 +153,14 @@ const NewArrival = () => {
                 Items.map((item,index)=>{
                     if(item.new == true) return(
                         <Item key={index}>
-                            <img src={item.image} width={'100%'} height={'100%'} style={{aspectRatio: 'auto'}}/>
+                            <Link to={'/detail'} state={item}>
+                                <img src={item.images[0]} width={'100%'} height={'100%'} style={{aspectRatio: 'auto', zIndex: -1, position: 'relative'}}/>
+                            </Link>
                             <ItemCategory>{item.category}</ItemCategory>
                             <ItemName>{item.name}</ItemName>
                             <ItemDesc>{item.short}</ItemDesc>
                             <ItemPrice>${item.price}</ItemPrice>
-                        </Item>
+                        </Item>    
                     )
                 })
             }

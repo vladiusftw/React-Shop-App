@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Items } from '../Items';
 import MediumArrow from '../styles/mediumArrow.css'
+import { Link } from 'react-router-dom';
 
 const BestSeller = () => {
 
@@ -120,7 +121,9 @@ const BestSeller = () => {
                     Items.map((item,index)=>{
                         if(item.bestseller == true) return(
                             <Item key={index}>
-                                <img src={item.image} width={'100%'} height={'100%'} style={{aspectRatio: 'auto'}}/>
+                                <Link to={'/detail'} state={item}>
+                                    <img src={item.images[0]} width={'100%'} height={'100%'} style={{aspectRatio: 'auto', zIndex: -1, position: 'relative'}}/>
+                                </Link>
                                 <ItemCategory>{item.category}</ItemCategory>
                                 <ItemName>{item.name}</ItemName>
                                 <ItemDesc>{item.short}</ItemDesc>

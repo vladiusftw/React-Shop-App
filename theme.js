@@ -5,5 +5,8 @@ export const theme = createTheme({
     badgeColor: {
       main: "#F3692E",
     },
+    paginationColor: {
+      main: "#F86338",
+    },
   },
 });
